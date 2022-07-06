@@ -3,4 +3,6 @@
     <string name="description_nickname">description_nickname</string>
     <string name="hint_nickname">닉네임</string>
     <string name="next">Next</string>
+    <string name="mail">Mail</string>
+    <string name="settings">Setting</string>
 </resources>
