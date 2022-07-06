@@ -1,5 +1,6 @@
 package com.woowahan.mail.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,6 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.woowahan.mail.R
 import com.woowahan.mail.databinding.ActivityMainBinding
+import com.woowahan.mail.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.etLayoutNickname.editText?.doAfterTextChanged {
             viewModel.validate(it.toString())
+        }
+        binding.btnNext.setOnClickListener {
+            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
