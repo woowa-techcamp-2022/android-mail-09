@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/primary"
+        android:icon="@drawable/ic_primary"
+        android:title="Primary" />
+    <item
+        android:id="@+id/social"
+        android:icon="@drawable/ic_social"
+        android:title="Social" />
+    <item
+        android:id="@+id/promotions"
+        android:icon="@drawable/ic_promotions"
+        android:title="Promotions" />
+</menu>
