@@ -4,13 +4,13 @@
     <item
         android:id="@+id/primary"
         android:icon="@drawable/ic_primary"
-        android:title="Primary" />
+        android:title="@string/primary" />
     <item
         android:id="@+id/social"
         android:icon="@drawable/ic_social"
-        android:title="Social" />
+        android:title="@string/social" />
     <item
         android:id="@+id/promotions"
         android:icon="@drawable/ic_promotions"
-        android:title="Promotions" />
+        android:title="@string/promotions" />
 </menu>
