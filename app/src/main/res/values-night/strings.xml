@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mail</string>
     <string name="description_nickname">description_nickname</string>
     <string name="hint_nickname">닉네임</string>
     <string name="next">Next</string>
