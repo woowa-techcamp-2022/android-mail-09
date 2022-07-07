@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".home.HomeActivity">
+            tools:context=".presentation.home.HomeActivity">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tb_mail"
@@ -29,10 +29,8 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/container_view"
-                android:name="com.woowahan.mail.home.mail.MailFragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:tag="mail"
                 app:layout_constraintBottom_toTopOf="@id/bn_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
