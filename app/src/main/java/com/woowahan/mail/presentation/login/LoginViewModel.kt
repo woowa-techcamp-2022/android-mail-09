@@ -1,4 +1,4 @@
-package com.woowahan.mail.login
+package com.woowahan.mail.presentation.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.woowahan.mail.login.LoginViewModel" />
+            type="com.woowahan.mail.presentation.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.MainActivity">
+        tools:context=".presentation.login.MainActivity">
 
         <ImageView
             android:id="@+id/iv_nickname"
@@ -56,7 +56,8 @@
             android:enabled="false"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_layout_nickname" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

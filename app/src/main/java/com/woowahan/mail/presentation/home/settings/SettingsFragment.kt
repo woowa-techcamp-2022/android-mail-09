@@ -1,4 +1,4 @@
-package com.woowahan.mail.home.settings
+package com.woowahan.mail.presentation.home.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater

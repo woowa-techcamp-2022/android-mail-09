@@ -1,4 +1,4 @@
-package com.woowahan.mail.login
+package com.woowahan.mail.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.woowahan.mail.R
 import com.woowahan.mail.databinding.ActivityMainBinding
-import com.woowahan.mail.home.HomeActivity
+import com.woowahan.mail.presentation.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
