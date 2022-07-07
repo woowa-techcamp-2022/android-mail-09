@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.woowahan.mail.data.model.Mail
 import com.woowahan.mail.data.model.MailType
-import com.woowahan.mail.data.repository.MailDefaultRepository
 import com.woowahan.mail.data.repository.MailRepository
 import kotlinx.coroutines.launch
 
 class MailViewModel(
-    private val mailRepository: MailRepository = MailDefaultRepository()
+    private val mailRepository: MailRepository
 ) : ViewModel() {
 
     private val _mails = MutableLiveData<List<Mail>>()

@@ -4,6 +4,7 @@
     package="com.woowahan.mail">
 
     <application
+        android:name=".presentation.MailApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

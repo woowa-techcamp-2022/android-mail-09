@@ -9,22 +9,6 @@
             name="mail"
             type="com.woowahan.mail.data.model.Mail" />
 
-        <variable
-            name="isAlphabet"
-            type="Boolean" />
-
-        <variable
-            name="color"
-            type="Integer" />
-
-        <variable
-            name="textColor"
-            type="Integer" />
-
-        <variable
-            name="representative"
-            type="String" />
-
         <import type="android.view.View" />
     </data>
 
@@ -42,8 +26,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="20dp"
-            android:background="@{isAlphabet == true ? color : 0}"
-            android:src="@{isAlphabet == true ? null : @drawable/ic_person}"
+            android:background="@{mail.isAlpha == true ? mail.color : 0}"
+            android:src="@{mail.isAlpha == true ? null : @drawable/ic_person}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_flow"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,10 +38,10 @@
             android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{representative}"
-            android:textColor="@{textColor}"
+            android:text="@{mail.representative}"
+            android:textColor="@{mail.textColor}"
             android:textSize="30sp"
-            android:visibility="@{isAlphabet == true ? View.VISIBLE : View.INVISIBLE}"
+            android:visibility="@{mail.isAlpha == true ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="@id/iv_profile"
             app:layout_constraintEnd_toEndOf="@id/iv_profile"
             app:layout_constraintStart_toStartOf="@id/iv_profile"

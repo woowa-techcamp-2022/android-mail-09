@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.woowahan.mail.data.model.MailType
 import com.woowahan.mail.databinding.FragmentMailBinding
 import com.woowahan.mail.presentation.home.mail.MailAdapter
 import com.woowahan.mail.presentation.home.mail.MailViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PrimaryFragment : Fragment() {
 
-    private val viewModel: MailViewModel by activityViewModels()
+    private val viewModel: MailViewModel by sharedViewModel()
     private lateinit var binding: FragmentMailBinding
     private val adapter = MailAdapter()
 

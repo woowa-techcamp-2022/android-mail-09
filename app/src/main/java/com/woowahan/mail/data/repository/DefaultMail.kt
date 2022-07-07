@@ -1,10 +1,11 @@
 package com.woowahan.mail.data.repository
 
+import android.graphics.Color
 import com.woowahan.mail.data.model.Mail
 import com.woowahan.mail.data.model.MailType
 
 object DefaultMail {
-    val mails = listOf<Mail>(
+    private val mails = listOf<Mail>(
         Mail(
             id = 1,
             sender = "Google",
@@ -126,4 +127,26 @@ object DefaultMail {
             type = MailType.PROMOTION
         ),
     )
+
+    fun create(): List<Mail> {
+        return mails.map {
+            when {
+                it.isAlphabet() -> {
+                    val (r, g, b) = listOf(it.getRandom(), it.getRandom(), it.getRandom())
+                    it.copy(
+                        color = Color.argb(255, r, g, b),
+                        textColor = Color.argb(
+                            255,
+                            (r + r) % 256,
+                            (g + g) % 256,
+                            (b + b) % 256
+                        ),
+                        representative = it.sender[0].toString(),
+                        isAlpha = true
+                    )
+                }
+                else -> it
+            }
+        }
+    }
 }
