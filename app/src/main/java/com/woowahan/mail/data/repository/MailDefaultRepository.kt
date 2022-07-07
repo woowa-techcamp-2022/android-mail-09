@@ -5,15 +5,15 @@ import com.woowahan.mail.data.model.MailType
 
 class MailDefaultRepository : MailRepository {
 
-    override suspend fun getMails(): List<Mail> {
-        return DefaultMail.mails
-    }
+    private val mails = DefaultMail.create()
+
+    override suspend fun getMails(): List<Mail> = mails
 
     override suspend fun filterMails(type: MailType): List<Mail> {
         return when (type) {
-            MailType.PRIMARY -> DefaultMail.mails.filter { it.type == type }
-            MailType.SOCIAL -> DefaultMail.mails.filter { it.type == type }
-            MailType.PROMOTION -> DefaultMail.mails.filter { it.type == type }
+            MailType.PRIMARY -> mails.filter { it.type == type }
+            MailType.SOCIAL -> mails.filter { it.type == type }
+            MailType.PROMOTION -> mails.filter { it.type == type }
         }
     }
 }

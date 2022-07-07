@@ -18,8 +18,8 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private var currentFragment = "Primary"
-    val nickname by lazy { intent.getStringExtra(Constant.NICKNAME) }
-    val email by lazy { intent.getStringExtra(Constant.EMAIL) }
+    private val nickname by lazy { intent.getStringExtra(Constant.NICKNAME) }
+    private val email by lazy { intent.getStringExtra(Constant.EMAIL) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
