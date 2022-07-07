@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.woowahan.mail.R
 import com.woowahan.mail.databinding.ActivityHomeBinding
+import com.woowahan.mail.presentation.common.Constant
 import com.woowahan.mail.presentation.home.mail.primary.PrimaryFragment
 import com.woowahan.mail.presentation.home.mail.promotion.PromotionFragment
 import com.woowahan.mail.presentation.home.mail.social.SocialFragment
@@ -17,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private var currentFragment = "Primary"
+    val nickname by lazy { intent.getStringExtra(Constant.NICKNAME) }
+    val email by lazy { intent.getStringExtra(Constant.EMAIL) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +45,15 @@ class HomeActivity : AppCompatActivity() {
                 return true
             }
             R.id.navigation_settings -> {
-                changeFragment(SettingsFragment(), getString(R.string.settings))
+                binding.nvView.menu.findItem(R.id.primary).isChecked = false
+                binding.nvView.menu.findItem(R.id.social).isChecked = false
+                binding.nvView.menu.findItem(R.id.promotions).isChecked = false
+                val settingsFragment = SettingsFragment()
+                val bundle = Bundle()
+                bundle.putString(Constant.NICKNAME, nickname)
+                bundle.putString(Constant.EMAIL, email)
+                settingsFragment.arguments = bundle
+                changeFragment(settingsFragment, getString(R.string.settings))
                 return true
             }
         }

@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.woowahan.mail.R
 import com.woowahan.mail.databinding.ActivityMainBinding
+import com.woowahan.mail.presentation.common.Constant
 import com.woowahan.mail.presentation.home.HomeActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.btnNext.setOnClickListener {
             val intent = Intent(this@MainActivity, HomeActivity::class.java)
+            intent.putExtra(Constant.NICKNAME, viewModel.nickname.value)
+            intent.putExtra(Constant.EMAIL, viewModel.email.value)
             startActivity(intent)
             finish()
         }
