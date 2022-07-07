@@ -16,24 +16,28 @@ import com.woowahan.mail.presentation.home.settings.SettingsFragment
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private var currentFragment = "Primary"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
+        val savedFragment = savedInstanceState?.getString("fragment") ?: getString(R.string.primary)
+        changeFragment(findFragment(savedFragment), savedFragment)
         initView()
     }
 
     private fun initView() {
-        changeFragment(PrimaryFragment(), getString(R.string.primary))
         binding.tbMail.setNavigationOnClickListener { binding.drawerLayout.openDrawer(GravityCompat.START) }
         binding.nvView.setNavigationItemSelectedListener { setDrawerListener(it) }
-        binding.bnMain.setOnItemSelectedListener { setBottomNavigationListener(it) }
+        binding.bnMain?.setOnItemSelectedListener { setBottomNavigationListener(it) }
+        binding.nrMain?.setOnItemSelectedListener { setBottomNavigationListener(it) }
     }
 
     private fun setBottomNavigationListener(it: MenuItem): Boolean {
         when (it.itemId) {
             R.id.navigation_mail -> {
+                binding.nvView.menu.findItem(R.id.primary).isChecked = true
                 changeFragment(PrimaryFragment(), getString(R.string.primary))
                 return true
             }
@@ -46,7 +50,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setDrawerListener(it: MenuItem): Boolean {
-        binding.bnMain.selectedItemId = R.id.navigation_mail
+        binding.bnMain?.selectedItemId = R.id.navigation_mail
+        binding.nrMain?.selectedItemId = R.id.navigation_mail
         when (it.itemId) {
             R.id.primary -> changeFragment(PrimaryFragment(), getString(R.string.primary))
             R.id.social -> changeFragment(SocialFragment(), getString(R.string.social))
@@ -61,10 +66,19 @@ class HomeActivity : AppCompatActivity() {
         transaction.replace(R.id.container_view, fragment, tag)
         transaction.commit()
         if (tag == getString(R.string.settings)) {
-            binding.bnMain.menu.findItem(R.id.navigation_settings).isChecked = true
+            binding.bnMain?.menu?.findItem(R.id.navigation_settings)?.isChecked = true
+            binding.nrMain?.menu?.findItem(R.id.navigation_settings)?.isChecked = true
+
         } else {
-            binding.bnMain.menu.findItem(R.id.navigation_mail).isChecked = true
+            binding.bnMain?.menu?.findItem(R.id.navigation_mail)?.isChecked = true
+            binding.nrMain?.menu?.findItem(R.id.navigation_mail)?.isChecked = true
         }
+        currentFragment = tag
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("fragment", currentFragment)
     }
 
     override fun onBackPressed() {
@@ -80,4 +94,14 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun findFragment(fragment: String): Fragment {
+        return when (fragment) {
+            "Primary" -> PrimaryFragment()
+            "Social" -> SocialFragment()
+            "Promotions" -> PromotionFragment()
+            else -> SettingsFragment()
+        }
+    }
+
 }
